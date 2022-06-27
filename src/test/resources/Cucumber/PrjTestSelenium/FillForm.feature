@@ -2,6 +2,6 @@ Feature: Fill form page
  
 Scenario: Fill form page and go next
 
-Given Check opened form page
-When Fill all required form fields
-Then Click next button
+Given Start Selenium Chrome Driver
+When For each tab fill all required form fields and click next button
+Then Wait for success message in last tab
