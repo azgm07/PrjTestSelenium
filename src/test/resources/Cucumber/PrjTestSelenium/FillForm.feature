@@ -1,7 +1,7 @@
-Feature: Fill form page
+Feature: Fill form and send email
  
-Scenario: Fill form page and go next
+Scenario: As a user, I want to fill all required form fields and send the email
 
-Given Start Selenium Chrome Driver
-When For each tab fill all required form fields and click next button
-Then Wait and check for result message
+Given Start browser with Selenium Chrome
+When Fill all required form fields and submit
+Then Wait and check the alert for success

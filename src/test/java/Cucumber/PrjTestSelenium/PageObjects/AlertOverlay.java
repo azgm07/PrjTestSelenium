@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckWarning extends FormPageTab{
+public class AlertOverlay extends FormPageTab{
 	
 	//CONSTRUCTOR
-	public CheckWarning(WebDriver driver) {
+	public AlertOverlay(WebDriver driver) {
 		super(driver);
 	}
 	

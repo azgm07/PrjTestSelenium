@@ -24,8 +24,8 @@ public class StepDefinitions {
 	WebDriver driver;
 	
 	//Definitions	
-	@Given("^Start Selenium Chrome Driver$")
-	public void start_selenium_chrome_driver() throws Throwable
+	@Given("^Start browser with Selenium Chrome$")
+	public void start_selenium_chrome() throws Throwable
 	{
 		//Path to chromedriver
 		String filePath = new File("drivers/chromedriver.exe").getAbsolutePath();
@@ -35,9 +35,8 @@ public class StepDefinitions {
 		
 		//Chrome options
 		ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless");     
-        //options.addArguments("--disable-gpu");
-        //options.addArguments("--window-size=1400,800"); 
+        //options.addArguments("--headless"); //For test is better with headless option
+        options.addArguments("--disable-gpu");
         
 		driver= new ChromeDriver(options);					
 		driver.manage().window().maximize();			
@@ -49,7 +48,7 @@ public class StepDefinitions {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("nextenterinsurantdata")));
 	}
 	
-	@When("^For each tab fill all required form fields and click next button$")
+	@When("^Fill all required form fields and submit$")
 	public void fill_required_fields() throws Throwable
 	{
 		//Thread.sleep(1000);
@@ -74,11 +73,11 @@ public class StepDefinitions {
 		sendQuoteTab.ClickEndButton();
 	}
 	
-	@Then("^Wait and check for result message$")
+	@Then("^Wait and check the alert for success$")
 	public void verify_selector_exists() throws Throwable
 	{
-		CheckWarning checkWarning = new CheckWarning(driver);
-		boolean result = checkWarning.CheckIfSuccess();
+		AlertOverlay alertOverlay = new AlertOverlay(driver);
+		boolean result = alertOverlay.CheckIfSuccess();
 		driver.quit();
 		assertEquals(true, result);
 	}
