@@ -2,5 +2,5 @@ package Cucumber.PrjTestSelenium.PageInterfaces;
 
 public interface IFormPageTab {
 	public void FillRequiredFields();
-	public void ClickFinishButton();
+	public void ClickEndButton();
 }
