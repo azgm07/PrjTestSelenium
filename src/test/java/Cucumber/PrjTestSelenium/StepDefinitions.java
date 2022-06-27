@@ -7,10 +7,14 @@ import io.cucumber.java.en.When;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
+import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;		
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Cucumber.PrjTestSelenium.PageObjects.*;	
 
@@ -39,10 +43,14 @@ public class StepDefinitions {
 		driver.manage().window().maximize();			
 		driver.get("http://sampleapp.tricentis.com/101/app.php");		
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		
+		//Wait until is loaded
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("nextenterinsurantdata")));
 	}
 	
 	@When("^For each tab fill all required form fields and click next button$")
-	public void navigate_to_url() throws Throwable
+	public void fill_required_fields() throws Throwable
 	{
 		//Thread.sleep(1000);
 		VehicleDataTab vehicleDataTab = new VehicleDataTab(driver);
